@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../AuthContext";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function LoginPage() {
@@ -11,7 +11,7 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { setUser } = useAuth();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   function onLogInButtonPressed(e: React.FormEvent) {
     e.preventDefault();
@@ -23,13 +23,24 @@ function LoginPage() {
         { withCredentials: true }
       )
       .then((response) => {
-        // Assuming the response data is { user: { id, email, ... }, token: "..." }
-        setUser(response.data.user);
-        // navigate('/');
+        // Now call /me to get the user details
+        axios
+          .get(
+            "https://be-exhibition-curation-platform.onrender.com/api/auth/me",
+            {
+              withCredentials: true,
+            }
+          )
+          .then((meResponse) => {
+            setUser(meResponse.data.user);
+            navigate("/");
+          })
+          .catch((err) => {
+            console.error("Error fetching user after login:", err);
+          });
       })
       .catch((err) => {
         console.error("Login error:", err);
-        // If the backend returns an error message in response.data.msg, use that.
         const errorMsg =
           err.response?.data?.msg || "An error occurred during login.";
         setError(errorMsg);

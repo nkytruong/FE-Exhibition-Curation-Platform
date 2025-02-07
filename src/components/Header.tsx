@@ -85,11 +85,11 @@ function Header() {
         </Nav>
         <Nav>
           {user ? (
-            <Nav.Link href="/login" aria-label="Login">
+            <Nav.Link href="/my-account" aria-label="My Account">
               <UserOutlined />
             </Nav.Link>
           ) : (
-            <Nav.Link href="/my-account" aria-label="My Account">
+            <Nav.Link href="/login" aria-label="Login">
               <UserOutlined />
             </Nav.Link>
           )}

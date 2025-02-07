@@ -1,29 +1,14 @@
-// import axios from "axios";
-// import { createContext, useEffect, useState } from "react";
 
-// export const AuthContext = createContext({})
-
-// export default function AuthContextProvider({children}){
-//     const [user, setUser] = useState(null)
-
-//     useEffect(() => {
-//         axios
-//         .get('https://be-exhibition-curation-platform.onrender.com/api/auth/me', {withCredentials: true})
-//         .then((response) => {
-//             setUser(response.data.user)
-//         })
-//     })
-// }
-
-// src/AuthContext.tsx
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import axios from 'axios';
 // import { useNavigate } from 'react-router-dom';
 
 // Define the shape of a User object (customize as needed)
 export interface User {
-  id: string;
+  user_id: number;
   email: string;
+  first_name: string
+  surname: string
   // add any other fields as needed
 }
 
@@ -68,6 +53,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       .then(() => {
         setUser(null);
         // navigate('/login');
+        window.location.reload()
       })
       .catch((err) => {
         console.error('Logout failed:', err);
