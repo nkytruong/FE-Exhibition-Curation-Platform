@@ -1,6 +1,7 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import Alert from "react-bootstrap/Alert";
+// import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -23,13 +24,10 @@ function LoginPage() {
         { withCredentials: true }
       )
       .then((response) => {
-        // Now call /me to get the user details
         axios
           .get(
             "https://be-exhibition-curation-platform.onrender.com/api/auth/me",
-            {
-              withCredentials: true,
-            }
+            { withCredentials: true }
           )
           .then((meResponse) => {
             setUser(meResponse.data.user);
@@ -51,6 +49,7 @@ function LoginPage() {
     <div className="page-container">
       <h1>Login</h1>
       <div className="input-container">
+        {error && <Alert variant="warning">{error}</Alert>}
         <Form onSubmit={onLogInButtonPressed}>
           <Form.Group className="mb-3">
             <Form.Label htmlFor="emailInput">Email address</Form.Label>
@@ -77,7 +76,7 @@ function LoginPage() {
         </Form>
         <br />
         <p>
-          Don't have an account? Sign up <Link to="/register">here</Link>{" "}
+          {/* Don't have an account? Sign up <Link to="/register">here</Link>{" "} */}
         </p>
       </div>
     </div>

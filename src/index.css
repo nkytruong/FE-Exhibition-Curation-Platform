@@ -5,3 +5,36 @@
 .input-container {
     margin: 4%
 }
+
+/* Force the pagination list to wrap */
+.pagination {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center;
+  }
+  
+  /* Optional container styling for extra control */
+  .pagination-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .homepage-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+  }
+  
+  .content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  

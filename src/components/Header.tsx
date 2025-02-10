@@ -8,14 +8,23 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 
 function Header() {
   const [show, setShow] = useState(false);
   const { user } = useAuth();
+  const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  function handleSearchSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    navigate(`/search?q=${encodeURIComponent(searchText)}`);
+    setShow(false);
+  }
 
   return (
     <Navbar
@@ -26,30 +35,29 @@ function Header() {
       data-bs-theme="dark"
     >
       <Container fluid>
-        <Navbar.Brand href="/">EXHIBIT</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">
+          EXHIBIT
+        </Navbar.Brand>
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="">Browse All</Nav.Link>
+            <Nav.Link as={Link} to="/">
+              Home
+            </Nav.Link>
+            <Nav.Link as={Link} to="/browse">
+              Browse All
+            </Nav.Link>
             <NavDropdown title="By Source" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">
+              <NavDropdown.Item as={Link} to="/browse/cleveland_museum_of_art">
                 Cleveland Museum of Art
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
+              <NavDropdown.Item as={Link} to="/browse/art_institute_of_chicago">
                 Art Institute of Chicago
               </NavDropdown.Item>
-              {/* <NavDropdown.Divider /> */}
-              {/* <NavDropdown.Item href="#action5">
-                Something else here
-              </NavDropdown.Item> */}
             </NavDropdown>
-            <Nav.Link href="#" disabled>
-              Link
-            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <Nav>
@@ -67,15 +75,20 @@ function Header() {
               <Offcanvas.Title>Search</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Form className="d-flex">
+              <Form onSubmit={handleSearchSubmit} className="d-flex">
                 <InputGroup className="mb-3">
                   <Form.Control
                     type="search"
                     placeholder="Search"
-                    // className="me-2"
                     aria-label="Search"
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.target.value)}
                   />
-                  <Button variant="outline-secondary" id="button-addon2">
+                  <Button
+                    variant="outline-secondary"
+                    type="submit"
+                    id="button-addon2"
+                  >
                     Search
                   </Button>
                 </InputGroup>
@@ -85,11 +98,11 @@ function Header() {
         </Nav>
         <Nav>
           {user ? (
-            <Nav.Link href="/my-account" aria-label="My Account">
+            <Nav.Link as={Link} to="/my-account" aria-label="My Account">
               <UserOutlined />
             </Nav.Link>
           ) : (
-            <Nav.Link href="/login" aria-label="Login">
+            <Nav.Link as={Link} to="/login" aria-label="Login">
               <UserOutlined />
             </Nav.Link>
           )}
