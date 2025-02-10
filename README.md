@@ -4,6 +4,12 @@ EXHIBIT is an online platform that allows users to view artwork from different m
 
 This is the front-end component of the project.
 
+Check out the hosted website [here](https://exhibit-museum.netlify.app/) with the provided example user:
+```
+email address: john.doe@example.com
+password: password123
+```
+
 ## Tech Stack
 - TypeScript
 - React
