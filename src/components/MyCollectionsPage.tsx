@@ -1,8 +1,7 @@
-// MyCollectionsPage.tsx
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Card, Button } from "react-bootstrap";
-import { useAuth } from "../AuthContext";
+// import { useAuth } from "../AuthContext";
 import { Link } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Collection } from "../types";
@@ -13,7 +12,7 @@ function MyCollectionsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [showCreateForm, setShowCreateForm] = useState(false);
-  const { user } = useAuth();
+//   const { user } = useAuth();
 
   function fetchCollections() {
     axios
@@ -53,7 +52,7 @@ function MyCollectionsPage() {
           collectionId,
         { withCredentials: true }
       )
-      .then((response) => {
+      .then((_response) => {
         fetchCollections();
       })
       .catch((err) => {

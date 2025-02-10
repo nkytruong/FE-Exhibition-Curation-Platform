@@ -23,7 +23,7 @@ function LoginPage() {
         { email, password },
         { withCredentials: true }
       )
-      .then((response) => {
+      .then((_response) => {
         axios
           .get(
             "https://be-exhibition-curation-platform.onrender.com/api/auth/me",

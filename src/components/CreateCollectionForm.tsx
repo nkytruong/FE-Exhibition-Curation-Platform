@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
-import { useAuth } from "../AuthContext";
+// import { useAuth } from "../AuthContext";
 import { useNavigate } from "react-router-dom";
 
 function CreateCollectionForm() {
   const [collectionName, setCollectionName] = useState("");
   const [error, setError] = useState("");
-  const { user } = useAuth();
+//   const { user } = useAuth();
   const navigate = useNavigate();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -22,7 +22,7 @@ function CreateCollectionForm() {
         { collection_name: collectionName },
         { withCredentials: true }
       )
-      .then((response) => {
+      .then((_response) => {
         navigate("/my-account");
       })
       .catch((err) => {

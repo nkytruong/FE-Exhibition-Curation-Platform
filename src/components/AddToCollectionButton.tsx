@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Button, Form, Collapse } from "react-bootstrap";
 import Checkbox from "@mui/material/Checkbox";
@@ -112,7 +112,7 @@ function AddToCollectionButton(props: AddToCollectionProps) {
         payload,
         { withCredentials: true }
       )
-      .then(function (response) {
+      .then(() => {
         setOpen(false);
       })
       .catch(function (err) {
@@ -144,7 +144,7 @@ function AddToCollectionButton(props: AddToCollectionProps) {
             <div className="text-danger">{error}</div>
           ) : (
             <Form>
-              {collections.map(function (col) {
+              {collections.map((col) => {
                 return (
                   <FormControlLabel
                     key={col.collection_id}
