@@ -1,50 +1,29 @@
-# React + TypeScript + Vite
+# EXHIBIT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+EXHIBIT is an online platform that allows users to view artwork from different musuems. Users are able to view each artwork in detail and are able to create their own exhibitions consisting of their favourite art pieces.
 
-Currently, two official plugins are available:
+This is the front-end component of the project.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- TypeScript
+- React
+- Axios
 
-## Expanding the ESLint configuration
+## Local Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1) Clone the [repository](https://github.com/nkytruong/FE-Exhibition-Curation-Platform) by running the following command: 
 
-- Configure the top-level `parserOptions` property like this:
+```git clone https://github.com/nkytruong/FE-Exhibition-Curation-Platform```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+2) Navigate to the cloned repository and run the following command to install all the dependencies needed:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+   ```npm install```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+3) Run the following script to launch the website:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+```npm run dev```
+
+## Minimum Versions
+- TypeScript v5.6.3
+- React.js v19.0.0
+- Axios v1.7.9
