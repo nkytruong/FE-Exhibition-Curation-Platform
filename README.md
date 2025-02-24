@@ -3,6 +3,7 @@
 EXHIBIT is an online platform that allows users to view artwork from different musuems. Users are able to view each artwork in detail and are able to create their own exhibitions consisting of their favourite art pieces.
 
 This is the front-end component of the project.
+Check out the back-end for this project [here](https://github.com/nkytruong/BE-Exhibition-Curation-Platform)
 
 Check out the hosted website [here](https://exhibit-museum.netlify.app/) with the provided example user:
 ```
