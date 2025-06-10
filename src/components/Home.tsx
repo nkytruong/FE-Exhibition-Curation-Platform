@@ -1,4 +1,5 @@
 import { TypeAnimation } from "react-type-animation";
+import whiteGallery from "../assets/white-gallery.jpg"
 import fruit from "../assets/fruit.jpg";
 import statue from "../assets/statue.jpg";
 import crowd from "../assets/crowd.jpg"
@@ -15,7 +16,7 @@ function Home() {
 
   return (
     <div className="homepage-container">
-      <div className="gallery-image">
+      <div className="gallery-image" style={{backgroundImage: `url(${whiteGallery})`}}>
         <h1 id="exhibit-title">EXHIBIT</h1>
       </div>
       <div className="section-box">
