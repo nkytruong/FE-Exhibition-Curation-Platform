@@ -78,7 +78,7 @@ export interface SavedItemCardProps {
   item_title: string;
   artist: string;
   item_created_at: string;
-  detail_url: string;
+  detail_url?: string;
   onDelete: () => void;
 }
 

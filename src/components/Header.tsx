@@ -48,9 +48,9 @@ function Header() {
               Home
             </Nav.Link>
             <Nav.Link as={Link} to="/browse">
-              Browse All
+              Browse
             </Nav.Link>
-            <NavDropdown title="By Source" id="navbarScrollingDropdown">
+            <NavDropdown title="View by Source" id="navbarScrollingDropdown">
               <NavDropdown.Item as={Link} to="/browse/cleveland_museum_of_art">
                 Cleveland Museum of Art
               </NavDropdown.Item>
