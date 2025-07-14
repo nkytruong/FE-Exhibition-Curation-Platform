@@ -1,16 +1,21 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
-// import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link } from "react-router-dom";
+// import { useState } from "react";
 import { useAuth } from "../AuthContext";
 import { useNavigate } from "react-router-dom";
+import { LoginProps } from "../types";
 import axios from "axios";
 
-function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+function LoginPage({
+  email,
+  setEmail,
+  password,
+  setPassword,
+  error,
+  setError,
+}: LoginProps) {
   const { setUser } = useAuth();
   const navigate = useNavigate();
 
@@ -52,7 +57,7 @@ function LoginPage() {
         {error && <Alert variant="warning">{error}</Alert>}
         <Form onSubmit={onLogInButtonPressed}>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="emailInput">Email address</Form.Label>
+            <Form.Label>Email address</Form.Label>
             <Form.Control
               type="email"
               placeholder="name@example.com"
@@ -61,7 +66,7 @@ function LoginPage() {
             />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="passwordInput">Password</Form.Label>
+            <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
               id="inputPassword5"
@@ -76,7 +81,7 @@ function LoginPage() {
         </Form>
         <br />
         <p>
-          {/* Don't have an account? Sign up <Link to="/register">here</Link>{" "} */}
+          Don't have an account? Sign up <Link to="/register">here</Link>{" "}
         </p>
       </div>
     </div>
